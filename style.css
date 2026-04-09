@@ -1,0 +1,230 @@
+/* Reseteo los márgenes y paddings que vienen por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Para que el padding no afecte el ancho total */
+}
+
+/* Estilo general del cuerpo de la página */
+body {
+    font-family: 'Poppins', sans-serif;  /* Fuente de Google Fonts https://fonts.google.com/ */
+    background: #1a1a2e;  /* Fondo con degradado */
+    min-height: 100vh;  /* Ocupa al menos toda la altura de la pantalla */
+}
+
+/* Barra de navegación */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);  /* Fondo blanco semi-transparente */
+    backdrop-filter: blur(10px);  /* Efecto de vidrio esmerilado */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+}
+
+/* Nombre de la tienda en el navbar */
+.navbar-brand {
+    font-weight: 700;  /* Negrita */
+    font-size: 1.5rem;
+    color: #2c3e66;  /* Azul oscuro */
+}
+
+/* Contador del carrito (badge) */
+#badge {
+    font-size: 1rem;
+    padding: 5px 12px;
+    transition: all 0.2s ease;  /* Animación suave cuando cambia */
+}
+
+/* Contenedor de cada tarjeta para el efecto flip */
+.product-card {
+    background-color: transparent;
+    width: 100%;
+    height: 380px;
+    perspective: 1500px;  /* Profundidad 3D para el efecto de volteo */
+    cursor: pointer;  /* Manito al pasar el mouse */
+}
+
+/* Parte interna que rota */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s ease-in-out;  /* Rotación suave */
+    transform-style: preserve-3d;  /* Mantiene el efecto 3D */
+    border-radius: 1rem;
+}
+
+/* Cuando el mouse está sobre la tarjeta, la rota */
+.product-card:hover .card-inner {
+    transform: rotateY(180deg);  /* Gira 180 grados en el eje Y */
+}
+
+/* Estilo común para frente y dorso de la tarjeta */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;  /* Oculta la parte de atrás cuando no se ve */
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);  /* Sombra */
+}
+
+/* Frente de la tarjeta (se ve antes de voltear) */
+.card-front {
+    background-color: white;
+    transform: rotateY(0deg);
+}
+
+/* Dorso de la tarjeta (se ve después de voltear) */
+.card-back {
+    background: linear-gradient(145deg, #ffffff, #f8f0ff);  /* Degradado suave */
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagen dentro de la tarjeta */
+.card-img-top {
+    height: 220px;
+    object-fit: cover;  /* La imagen cubre el espacio sin deformarse */
+    transition: transform 0.4s;  /* Animación al hacer hover */
+}
+
+/* Efecto de zoom en la imagen al pasar el mouse */
+.product-card:hover .card-img-top {
+    transform: scale(1.05);  /* Agranda un 5% */
+}
+
+/* Botón de agregar al carrito */
+.btn-agregar {
+    background: linear-gradient(90deg, #2c3e66, #3498db);  /* Degradado azul */
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover en el botón de agregar */
+.btn-agregar:hover {
+    transform: translateY(-3px);  /* Se levanta un poco */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);  /* Sombra más intensa */
+    background: linear-gradient(90deg, #1e2a4a, #2980b9);  /* Degradado más oscuro */
+}
+
+/* Efecto hover en el botón de vaciar carrito */
+.btn-outline-danger:hover {
+    transform: scale(1.02);  /* Se agranda un poquito */
+}
+
+/* Contenedor de la lista del carrito (para scroll si hay muchos items) */
+#lista-carrito {
+    max-height: 300px;  /* Altura máxima */
+    overflow-y: auto;  /* Scroll vertical si es necesario */
+}
+
+/* Cada item dentro del carrito */
+.carrito-item {
+    background: #fef9f0;  /* Fondo crema */
+    border-left: 4px solid #3498db;  /* Borde izquierdo azul */
+    margin-bottom: 10px;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;  /* Nombre a la izquierda, botón a la derecha */
+    align-items: center;
+    transition: all 0.2s;
+    animation: fadeIn 0.3s ease;  /* Animación al aparecer */
+}
+
+/* Animación de entrada para los items del carrito */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);  /* Viene desde la derecha */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);  /* Termina en su lugar */
+    }
+}
+
+/* Efecto hover en los items del carrito */
+.carrito-item:hover {
+    background: #fff3e0;
+    transform: scale(1.01);  /* Se agranda apenas */
+}
+
+/* Contenedor de la información del producto en el carrito */
+.info-item {
+    display: flex;
+    flex-direction: column;  /* Nombre arriba, precio abajo */
+}
+
+/* Nombre del producto en el carrito */
+.nombre-item {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* Precio del producto en el carrito */
+.precio-item {
+    font-size: 0.85rem;
+    color: #2c3e66;
+    font-weight: 500;
+}
+
+/* Botón para eliminar un item del carrito */
+.btn-eliminar {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #e74c3c;  /* Rojo */
+    transition: all 0.2s;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Efecto hover en el botón eliminar */
+.btn-eliminar:hover {
+    background: #ffe0e0;  /* Fondo rojo claro */
+    color: #c0392b;  /* Rojo más oscuro */
+    transform: scale(1.1);  /* Se agranda */
+}
+
+/* Mensaje de "carrito vacío" */
+#msg-vacio {
+    background: #eef2ff;
+    border: none;
+    color: #2c3e66;
+    font-weight: 500;
+}
+
+/* Estilo de la barra de scroll (para Chrome y Edge) */
+#lista-carrito::-webkit-scrollbar {
+    width: 6px;  /* Barra delgada */
+}
+
+#lista-carrito::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#lista-carrito::-webkit-scrollbar-thumb {
+    background: #3498db;  /* Azul */
+    border-radius: 10px;
+}
+
+/* Responsive para pantallas chicas (celulares) */
+@media (max-width: 768px) {
+    .product-card {
+        height: 360px;  /* Un poco más baja */
+    }
+    .card-img-top {
+        height: 180px;  /* Imagen más chica */
+    }
+}
