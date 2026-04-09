@@ -1,1 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tienda | Carrito de Compras</title>
+    <!-- Bootstrap 5.3.0 - lo pidió la profe -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para los iconos, los busqué en internet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Fuente Poppins, me gustó cómo se ve -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Mis estilos propios -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <!-- NAVBAR - acá va el contador del carrito -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-store me-2"></i>
+                Mi Tienda
+            </a>
+            <div class="d-flex align-items-center">
+                <i class="fas fa-shopping-cart fs-5 me-2"></i>
+                <!-- el badge empieza en 0 y lo actualizo con JS -->
+                <span id="badge" class="badge bg-danger rounded-pill">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container my-5">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold">Nuestros Productos</h1>
+            <p class="text-muted">🖱️ Haz clic en la tarjeta para ver el precio</p>
+        </div>
+
+        <!-- Grid de productos. Usé row y col de Bootstrap para que sea responsive -->
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Producto 1: Reloj Inteligente -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card" data-nombre="Reloj Inteligente" data-precio="156000">
+                    <div class="card-inner">
+                        <!-- Parte del frente de la tarjeta -->
+                        <div class="card-front">
+                            <div class="card h-100 border-0 shadow rounded-4">
+                                <img src="images/RelojInteligente.jpg" class="card-img-top rounded-top-4" alt="Reloj Inteligente">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fw-bold">Reloj Inteligente</h5>
+                                    <i class="fas fa-rotate-right text-muted"></i>
+                                    <p class="small text-muted mt-1">Voltea para ver precio</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Parte de atrás de la tarjeta, acá está el precio y el botón -->
+                        <div class="card-back">
+                            <div class="card h-100 border-0 shadow rounded-4 bg-light">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                    <i class="fas fa-tag fa-3x mb-3 text-primary"></i>
+                                    <h3 class="fw-bold text-success">$156,000</h3>
+                                    <button class="btn-agregar btn btn-primary mt-3 rounded-pill px-4" 
+                                            data-nombre="Reloj Inteligente" 
+                                            data-precio="156000">
+                                        <i class="fas fa-cart-plus me-2"></i>Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 2: Audífonos Bluetooth -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card" data-nombre="Audífonos Bluetooth" data-precio="45000">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card h-100 border-0 shadow rounded-4">
+                                <img src="images/Audifonos.jpg" class="card-img-top rounded-top-4" alt="Audífonos Bluetooth">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fw-bold">Audífonos Bluetooth</h5>
+                                    <i class="fas fa-rotate-right text-muted"></i>
+                                    <p class="small text-muted mt-1">Voltea para ver precio</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card h-100 border-0 shadow rounded-4 bg-light">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                    <i class="fas fa-tag fa-3x mb-3 text-primary"></i>
+                                    <h3 class="fw-bold text-success">$45,000</h3>
+                                    <button class="btn-agregar btn btn-primary mt-3 rounded-pill px-4" 
+                                            data-nombre="Audífonos Bluetooth" 
+                                            data-precio="45000">
+                                        <i class="fas fa-cart-plus me-2"></i>Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 3: Cargador Inalámbrico -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card" data-nombre="Cargador Inalámbrico" data-precio="39900">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card h-100 border-0 shadow rounded-4">
+                                <img src="images/CargadorInalambrico.jpg" class="card-img-top rounded-top-4" alt="Cargador Inalámbrico">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fw-bold">Cargador Inalámbrico</h5>
+                                    <i class="fas fa-rotate-right text-muted"></i>
+                                    <p class="small text-muted mt-1">Voltea para ver precio</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card h-100 border-0 shadow rounded-4 bg-light">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                    <i class="fas fa-tag fa-3x mb-3 text-primary"></i>
+                                    <h3 class="fw-bold text-success">$39,900</h3>
+                                    <button class="btn-agregar btn btn-primary mt-3 rounded-pill px-4" 
+                                            data-nombre="Cargador Inalámbrico" 
+                                            data-precio="39900">
+                                        <i class="fas fa-cart-plus me-2"></i>Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 4: Mochila para Laptop -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card" data-nombre="Mochila para Laptop" data-precio="67900">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card h-100 border-0 shadow rounded-4">
+                                <img src="images/MochilaLaptop.jpg" class="card-img-top rounded-top-4" alt="Mochila para Laptop">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fw-bold">Mochila para Laptop</h5>
+                                    <i class="fas fa-rotate-right text-muted"></i>
+                                    <p class="small text-muted mt-1">Voltea para ver precio</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card h-100 border-0 shadow rounded-4 bg-light">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                    <i class="fas fa-tag fa-3x mb-3 text-primary"></i>
+                                    <h3 class="fw-bold text-success">$67,900</h3>
+                                    <button class="btn-agregar btn btn-primary mt-3 rounded-pill px-4" 
+                                            data-nombre="Mochila para Laptop" 
+                                            data-precio="67900">
+                                        <i class="fas fa-cart-plus me-2"></i>Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 5: Gafas de Sol -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card" data-nombre="Gafas de Sol" data-precio="45800">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card h-100 border-0 shadow rounded-4">
+                                <img src="images/GafasDeSol.jpg" class="card-img-top rounded-top-4" alt="Gafas de Sol">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fw-bold">Gafas de Sol</h5>
+                                    <i class="fas fa-rotate-right text-muted"></i>
+                                    <p class="small text-muted mt-1">Voltea para ver precio</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card h-100 border-0 shadow rounded-4 bg-light">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                    <i class="fas fa-tag fa-3x mb-3 text-primary"></i>
+                                    <h3 class="fw-bold text-success">$45,800</h3>
+                                    <button class="btn-agregar btn btn-primary mt-3 rounded-pill px-4" 
+                                            data-nombre="Gafas de Sol" 
+                                            data-precio="45800">
+                                        <i class="fas fa-cart-plus me-2"></i>Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 6: Camiseta Deportiva -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card" data-nombre="Camiseta Deportiva" data-precio="32500">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card h-100 border-0 shadow rounded-4">
+                                <img src="images/CamisetaDeportiva.jpg" class="card-img-top rounded-top-4" alt="Camiseta Deportiva">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fw-bold">Camiseta Deportiva</h5>
+                                    <i class="fas fa-rotate-right text-muted"></i>
+                                    <p class="small text-muted mt-1">Voltea para ver precio</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card h-100 border-0 shadow rounded-4 bg-light">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                    <i class="fas fa-tag fa-3x mb-3 text-primary"></i>
+                                    <h3 class="fw-bold text-success">$32,500</h3>
+                                    <button class="btn-agregar btn btn-primary mt-3 rounded-pill px-4" 
+                                            data-nombre="Camiseta Deportiva" 
+                                            data-precio="32500">
+                                        <i class="fas fa-cart-plus me-2"></i>Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 7: Lámpara LED -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card" data-nombre="Lámpara LED" data-precio="28900">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card h-100 border-0 shadow rounded-4">
+                                <img src="images/lamparaLed.jpg" class="card-img-top rounded-top-4" alt="Lámpara LED">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fw-bold">Lámpara LED</h5>
+                                    <i class="fas fa-rotate-right text-muted"></i>
+                                    <p class="small text-muted mt-1">Voltea para ver precio</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card h-100 border-0 shadow rounded-4 bg-light">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                    <i class="fas fa-tag fa-3x mb-3 text-primary"></i>
+                                    <h3 class="fw-bold text-success">$28,900</h3>
+                                    <button class="btn-agregar btn btn-primary mt-3 rounded-pill px-4" 
+                                            data-nombre="Lámpara LED" 
+                                            data-precio="28900">
+                                        <i class="fas fa-cart-plus me-2"></i>Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 8: Mug -->
+            <div class="col-md-6 col-lg-3">
+                <div class="product-card" data-nombre="Taza Térmica" data-precio="12500">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card h-100 border-0 shadow rounded-4">
+                                <img src="images/MugInox.jpg" class="card-img-top rounded-top-4" alt="Taza Térmica">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fw-bold">Taza Térmica</h5>
+                                    <i class="fas fa-rotate-right text-muted"></i>
+                                    <p class="small text-muted mt-1">Voltea para ver precio</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card h-100 border-0 shadow rounded-4 bg-light">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                    <i class="fas fa-tag fa-3x mb-3 text-primary"></i>
+                                    <h3 class="fw-bold text-success">$12,500</h3>
+                                    <button class="btn-agregar btn btn-primary mt-3 rounded-pill px-4" 
+                                            data-nombre="Taza Térmica" 
+                                            data-precio="12500">
+                                        <i class="fas fa-cart-plus me-2"></i>Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DEL CARRITO - acá se van agregando los productos -->
+        <div class="cart-section mt-5 pt-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow border-0 rounded-4">
+                        <div class="card-header bg-dark text-white py-3 rounded-top-4">
+                            <h3 class="mb-0 fs-4"><i class="fas fa-shopping-cart me-2"></i> Mi Carrito</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Mensaje que se muestra cuando no hay nada en el carrito -->
+                            <div id="msg-vacio" class="alert alert-info text-center">
+                                <i class="fas fa-info-circle me-2"></i> Tu carrito está vacío
+                            </div>
+                            <!-- Lista dinámica, los items los creo en JavaScript -->
+                            <ul id="lista-carrito" class="list-group mb-4"></ul>
+                            <!-- Total y botón para vaciar todo -->
+                            <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                                <h4 class="fw-bold mb-0">Total: <span id="total" class="text-success">$0.00</span></h4>
+                                <button id="btn-vaciar" class="btn btn-outline-danger rounded-pill px-4">
+                                    <i class="fas fa-trash-alt me-2"></i>Vaciar Carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-4 mt-5 border-top bg-light">
+        <p class="mb-0 text-muted">© 2026 - Mi Tienda | Carrito de Compras</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
